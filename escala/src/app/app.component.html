@@ -1,71 +1,56 @@
-<div class="container">
+<div class="container-centro">
     <div class="row">
-      <div class="col-2">
-      
-      </div>
       <div class="col-3">
-        <form>
-            <div class="form-row align-items-center">
-              <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">Funcionário</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <div class="card card-form poppins-regular">
+          <form>
+            <div class="form-row">
+                <label for="SelectfuncionaiosLista"><h5>Funcionário</h5></label>
+                <select class="custom-select" id="SelectfuncionaiosLista">
                   <option selected>Escolha...</option>
-                  <option value="1">Maria</option>
-                  <option value="2">Jose</option>
-                  <option value="3">Julia</option>
+                   @for (pessoa of pessoas; track pessoa){
+                    <option value="pessoa.nome">{{pessoa.nome}}</option>}
+                  
                 </select>
-              </div>
-              <div class="col-auto my-1">
-                <div class="custom-control custom-checkbox mr-sm-2">
-                  <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                  <label class="custom-control-label" for="customControlAutosizing">Trabalha final de semana</label>
-                  <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                  <label class="custom-control-label" for="customControlAutosizing">8h</label>
-                  <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                  <label class="custom-control-label" for="customControlAutosizing">12h</label>
-                </div>
-              </div>
-              <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary">Adicionar</button>
-              </div>
             </div>
-          </form>
-          <div>
-            <h5> 
-                Legendas: 
-            </h5>
-            MV - Matutino e Vespertino <br>
-            N - Noturno
-          </div>
+            <div class="form-row card-checkbox ">
+                  <div class="row"> 
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="checkboxD">
+                      <label class="custom-control-label" for="checkboxD">D - 7h às 11h - 12 às 19h</label>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="checkboxN">
+                      <label class="custom-control-label" for="checkboxN">N - 19h às 21h  - 22h às 7h</label>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="checkboxM">
+                      <label class="custom-control-label" for="checkboxM">M- 07h às 12h  - 14h às 17h</label>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="checkboxMT">
+                      <label class="custom-control-label" for="checkboxMT">MT - 08h às 12h  -  14h às 18h</label>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <input type="checkbox" class="custom-control-input" id="checkboxS">
+                      <label class="custom-control-label" for="checkboxMS">M*- 08h às 12h Sábado</label>
+                    </div>
+                  </div>
+            </div>
+            <div class="row btn-adicionar">
+              <button type="submit" class="btn btn-primary">Adicionar</button>
+             </div>
+          </form>  
+        </div>
       </div>
-      <div class="col-7">
+      <div class="col-9">
+        <div class="card card-table">
         <table class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">1</th>
-                <th scope="col">2</th>
-                <th scope="col">3</th>
-                <th scope="col">4</th>
-                <th scope="col">5</th>
-                <th scope="col">6</th>
-                <th scope="col">7</th>
-                <th scope="col">8</th>
-                <th scope="col">9</th>
-                <th scope="col">10</th>
-                <th scope="col">11</th>
-                <th scope="col">12</th>
-                <th scope="col">13</th>
-                <th scope="col">14</th>
-                <th scope="col">15</th>
-                <th scope="col">16</th>
-                <th scope="col">17</th>
-                <th scope="col">18</th>
-                <th scope="col">19</th>
-                <th scope="col">20</th>
-                <th scope="col">21</th>
-                <th scope="col">22</th>
-                <th scope="col">23</th>
+                @for (pessoa of pessoas; track pessoa){
+                <th scope="col">pessoa.length</th>
+                }
               </tr>
             </thead>
             <tbody>
@@ -119,34 +104,11 @@
                 <td>N</td>
                 <td>N</td>
                 <td>N</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>SM</td>
-                <td>SN</td>
-                <td>SM</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>N</td>
                 <td>N</td>
               </tr>
             </tbody>
           </table>
+        </div>
       </div>
     </div>
   </div>

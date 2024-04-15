@@ -1,7 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
-.body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
     margin: 0px;
+    background-color: #afcce6 !important;
     }
-.container{
-    background-color: #E7EEF4;
+.container-centro{
+    margin: 1%;
+    padding: 1%;
+    background-color: #d8e6f3 !important;
+    border-radius: 10px;
+    width: 90%;
 }
+.card-checkbox{
+    margin-top: 5%;
+    padding-top: 1%;
+    -webkit-box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+    -moz-box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+    box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+}
+.card-form{
+    padding: 3%;
+}
+.card{
+    -webkit-box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+    -moz-box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+    box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
+}
+.card-table{
+    display: inline-block;
+    overflow-x:scroll;
+}
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .custom-select{
+    width: 100%;
+  }
+  .custom-control-input{
+    margin-right: 3%;
+  }
+  .btn-adicionar{
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
