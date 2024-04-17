@@ -48,9 +48,9 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                @for (pessoa of pessoas; track pessoa){
-                <th scope="col">pessoa.length</th>
-                }
+                <!-- @for (as of a; track a){ -->
+                <th scope="col" ngSkipHydration>{{a}}</th>
+                
               </tr>
             </thead>
             <tbody>
