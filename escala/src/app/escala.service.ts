@@ -1,39 +1,26 @@
 import { Injectable } from '@angular/core';
+import moment from '../../node_modules/moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EscalaService {
 
-  pessoa:[] = [];
+  calendario:any[] = [];
   
-  constructor() { 
-
-    
-
-  }
-
-  addPessoa(matriz: any, mes: any, tipo:any){
   
-    let dias = this.getDias(mes)
-    let x = 0
-    while(x <= dias){
-      if (x%2 == 0) {
-        matriz[x] = tipo;
-      }else  matriz[x] = '-';
-      x++;
+  constructor(){}
+
+  addPessoa(ForObj:any){
+
+    let dias = moment(ForObj.escolhaMes, "YYYY-MM").daysInMonth()
+    if (this.calendario[0] == null) {
+      for(let i=0; i < dias; i++){
+        let d = moment(ForObj.escolhaMes).add(i, 'days').format('D, ddd')
+        this.calendario.push(d)
+      }
     }
-
-    return matriz;
+   
+    return this.calendario;
   }
-  getDias(mes: number){
-    if (mes == 2){
-       return 28;}
-      else if (mes == 4 || mes == 6 || mes == 9 || mes == 11 ){
-        return 30}
-      else 
-        return 31
-  }
-
-
 }

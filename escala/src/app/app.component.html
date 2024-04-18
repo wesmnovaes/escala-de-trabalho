@@ -2,109 +2,71 @@
     <div class="row">
       <div class="col-3">
         <div class="card card-form poppins-regular">
-          <form>
+          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"> 
             <div class="form-row">
                 <label for="SelectfuncionaiosLista"><h5>Funcionário</h5></label>
-                <select class="custom-select" id="SelectfuncionaiosLista">
+                <select class="custom-select" id="SelectfuncionaiosLista"  formControlName="SelectfuncionaiosLista">
                   <option selected>Escolha...</option>
                    @for (pessoa of pessoas; track pessoa){
-                    <option value="pessoa.nome">{{pessoa.nome}}</option>}
-                  
-                </select>
+                    <option value={{pessoa.nome}}>{{pessoa.nome}}</option>}
+                </select>              
+            </div>
+            <div class="form-row" style="padding-top: 3%;">
+              <div class="row">
+                <div style="float: left">
+                  <label for="escolhaMes" style="padding-right: 10px;">Mês escala:</label> 
+                  <input type="month" id="escolhaMes" formControlName="escolhaMes" name="escolhaMes" min="2024-01" max="2050-12"   />
+                </div>
+              </div>
             </div>
             <div class="form-row card-checkbox ">
                   <div class="row"> 
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxD">
+                      <input type="checkbox" class="custom-control-input" id="checkboxD" formControlName="checkboxD" >
                       <label class="custom-control-label" for="checkboxD">D - 7h às 11h - 12 às 19h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxN">
+                      <input type="checkbox" class="custom-control-input" id="checkboxN" formControlName="checkboxN">
                       <label class="custom-control-label" for="checkboxN">N - 19h às 21h  - 22h às 7h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxM">
+                      <input type="checkbox" class="custom-control-input" id="checkboxM" formControlName="checkboxM">
                       <label class="custom-control-label" for="checkboxM">M- 07h às 12h  - 14h às 17h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxMT">
+                      <input type="checkbox" class="custom-control-input" id="checkboxMT" formControlName="checkboxMT">
                       <label class="custom-control-label" for="checkboxMT">MT - 08h às 12h  -  14h às 18h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxS">
+                      <input type="checkbox" class="custom-control-input" id="checkboxS" formControlName="checkboxS">
                       <label class="custom-control-label" for="checkboxMS">M*- 08h às 12h Sábado</label>
                     </div>
                   </div>
             </div>
             <div class="row btn-adicionar">
-              <button type="submit" class="btn btn-primary">Adicionar</button>
+              <button type="submit"  class="btn btn-primary">Adicionar</button>
              </div>
           </form>  
         </div>
       </div>
       <div class="col-9">
         <div class="card card-table">
-        <table class="table">
+        <table class="table" >
             <thead>
-              <tr>
+              <tr >
                 <th scope="col">#</th>
-                <!-- @for (as of a; track a){ -->
-                <th scope="col" ngSkipHydration>{{a}}</th>
-                
+                 @for (c of calen; track c){ 
+                <th class="ver" scope="col"  ngSkipHydration>{{c}}</th> }
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
                 <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>S</td>
-                <td>S</td>
-                <td>S</td>
-                <td>S</td>
-                <td>S</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>SM</td>
-                <td>SN</td>
-                <td>SM</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>S</td>
-                <td>MV</td>
-                <td>N</td>
-                <td>N</td>
-                <td>N</td>
-                <td>N</td>
+                <td>M*</td>
               </tr>
             </tbody>
           </table>
@@ -112,4 +74,3 @@
       </div>
     </div>
   </div>
-
