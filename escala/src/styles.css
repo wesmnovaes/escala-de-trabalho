@@ -46,3 +46,14 @@ body{
     padding-left: 5%;
     padding-right: 5%;
   }
+  .datainput {
+    float: left;
+    display: inline-block; vertical-align: top;
+  }
+  /*colocar texto na vertical*/
+  .ver
+    {
+      writing-mode: vertical-lr;
+      display: inline-block;
+    }
+  
