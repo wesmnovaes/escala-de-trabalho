@@ -8,7 +8,7 @@
                 <select class="custom-select" id="SelectfuncionaiosLista"  formControlName="SelectfuncionaiosLista">
                   <option selected>Escolha...</option>
                    @for (pessoa of pessoas; track pessoa){
-                    <option value={{pessoa.nome}}>{{pessoa.nome}}</option>}
+                    <option value={{pessoa}}>{{pessoa}}</option>}
                 </select>              
             </div>
             <div class="form-row" style="padding-top: 3%;">
@@ -22,23 +22,23 @@
             <div class="form-row card-checkbox ">
                   <div class="row"> 
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxD" formControlName="checkboxD" >
+                      <input type="radio" class="custom-control-input" id="checkboxD" formControlName="checkboxD" >
                       <label class="custom-control-label" for="checkboxD">D - 7h às 11h - 12 às 19h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxN" formControlName="checkboxN">
+                      <input type="radio" class="custom-control-input" id="checkboxN" formControlName="checkboxN">
                       <label class="custom-control-label" for="checkboxN">N - 19h às 21h  - 22h às 7h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxM" formControlName="checkboxM">
+                      <input type="radio" class="custom-control-input" id="checkboxM" formControlName="checkboxM">
                       <label class="custom-control-label" for="checkboxM">M- 07h às 12h  - 14h às 17h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxMT" formControlName="checkboxMT">
+                      <input type="radio" class="custom-control-input" id="checkboxMT" formControlName="checkboxMT">
                       <label class="custom-control-label" for="checkboxMT">MT - 08h às 12h  -  14h às 18h</label>
                     </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                      <input type="checkbox" class="custom-control-input" id="checkboxS" formControlName="checkboxS">
+                      <input type="radio" class="custom-control-input" id="checkboxS" formControlName="checkboxS">
                       <label class="custom-control-label" for="checkboxMS">M*- 08h às 12h Sábado</label>
                     </div>
                   </div>
@@ -55,19 +55,20 @@
             <thead>
               <tr >
                 <th scope="col">#</th>
-                 @for (c of calen; track c){ 
-                <th class="ver" scope="col"  ngSkipHydration>{{c}}</th> }
+                 @for (c of calen; track c)
+                 { 
+                  <th scope="col" style="font-size: 8px;"  ngSkipHydration>{{c}}</th> 
+                 }
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>MV</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>M*</td>
-              </tr>
+              @for (fun of funcionario; track fun) 
+              {
+                <tr>
+                    <th scope="row">{{fun}}</th> 
+                    @for (esc of escala; track esc) {<td>{{esc}}</td>}
+                </tr>
+              }
             </tbody>
           </table>
         </div>

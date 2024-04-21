@@ -19,7 +19,8 @@ import '../../node_modules/moment/locale/pt-br';
 export class AppComponent {
 
   calen:any[] = [] 
-
+  escala:any[] = [] 
+  pessoas = ['Maria', 'José','Júlia','Pedro']
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
   funcionario:any[] = [];
@@ -36,12 +37,9 @@ export class AppComponent {
 
   onSubmit(){
     this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
-    this.calen = this.$services.addPessoa(this.checkoutForm.value);
+    this.escala = (this.$services.addEscala(this.checkoutForm.value.checkboxD,this.checkoutForm.value.checkboxN,this.checkoutForm.value.checkboxM,this.checkoutForm.value.checkboxMT,this.checkoutForm.value.checkboxS))
+    this.calen = this.$services.addMes(this.checkoutForm.value);
     this.checkoutForm.reset();
-  }
-  
-  pessoas = [{nome:"Maria",dias:['D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D']},
-             {nome:"Julia",dias:['D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D']},
-             {nome:"João",dias:['D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D','-','D']}
-            ]          
+
+  }          
 }
