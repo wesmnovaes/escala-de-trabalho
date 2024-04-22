@@ -27,19 +27,16 @@ export class AppComponent {
 
   checkoutForm = this.formBuilder.group({
     escolhaMes: '',
-    checkboxD: '',
-    checkboxN: '',
-    checkboxM: '',
-    checkboxMT: '',
-    checkboxS: '',
+    escala: '',
     SelectfuncionaiosLista:''
   });
 
   onSubmit(){
     this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
-    this.escala = (this.$services.addEscala(this.checkoutForm.value.checkboxD,this.checkoutForm.value.checkboxN,this.checkoutForm.value.checkboxM,this.checkoutForm.value.checkboxMT,this.checkoutForm.value.checkboxS))
     this.calen = this.$services.addMes(this.checkoutForm.value);
+    this.escala = (this.$services.addEscala(this.checkoutForm.value.escala))
+    console.log("a escala é : "+this.checkoutForm.value.escala)
     this.checkoutForm.reset();
-
+    
   }          
 }

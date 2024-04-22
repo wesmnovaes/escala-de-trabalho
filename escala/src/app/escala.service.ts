@@ -22,24 +22,11 @@ export class EscalaService {
     }
     return this.calendario;
   }
-  addEscala(checkboxD,checkboxN,checkboxM,checkboxMT,checkboxS){
-    if(checkboxD){
+  addEscala(escala){
       for (let d=0; d<this.dias; d++){
-        this.escala.push('D')
-      }} else if (checkboxN){
-        for (let d=0; d<this.dias; d++){
-          this.escala.push('N')
-        }}else if (checkboxM){
-          for (let d=0; d<this.dias; d++){
-            this.escala.push('M')
-          }}else if (checkboxMT){
-            for (let d=0; d<this.dias; d++){
-              this.escala.push('MT')
-            }}else if (checkboxS){
-              for (let d=0; d<this.dias; d++){
-                this.escala.push('S')
-              }}
-    
-            return this.escala;
-  }
+        console.log("no serviço é: "+escala);
+        this.escala.push(escala)
+      }
+    return this.escala;
+    }
 }
