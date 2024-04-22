@@ -11,6 +11,6 @@ Framework Angular
 
 Para rodar esse projeto você precisa:
 Navegar até a pasta escala
-# NPM INSTALL 
-# NPM START
+NPM INSTALL 
+NPM START
 Abrir a página no navegador
