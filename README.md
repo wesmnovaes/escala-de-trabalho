@@ -7,4 +7,10 @@ Estou disponibilizando ele apara analise, estudo e uso livre e personalizado des
 
 Tecnologias utilizadas: 
 
-FontEnd Angular
+Framework Angular
+
+Para rodar esse projeto você precisa:
+Navegar até a pasta escala
+# NPM INSTALL 
+# NPM START
+Abrir a página no navegador
