@@ -6,7 +6,6 @@
             <div class="form-row">
                 <label for="SelectfuncionaiosLista"><h5>Funcionário</h5></label>
                 <select class="custom-select" id="SelectfuncionaiosLista"  formControlName="SelectfuncionaiosLista">
-                  <option selected>Escolha...</option>
                    @for (pessoa of pessoas; track pessoa){
                     <option value={{pessoa}}>{{pessoa}}</option>}
                 </select>              
@@ -20,29 +19,42 @@
               </div>
             </div>
             <div class="form-row card-radio">
-                  <div class="row"> 
-                    <div class="custom-control custom-radio my-1 mr-sm-2">
-                      <input type="radio" class="custom-control-input" id="radioD" value="D" formControlName="escala" >
-                      <label class="custom-control-label" for="radioD">D - 7h às 11h - 12 às 19h</label>
-                    </div>
-                    <div class="custom-control custom-radio my-1 mr-sm-2">
-                      <input type="radio" class="custom-control-input" id="radioN" name="escala" value="N" formControlName="escala">
-                      <label class="custom-control-label" for="radioN">N - 19h às 21h  - 22h às 7h</label>
-                    </div>
-                    <div class="custom-control custom-radio my-1 mr-sm-2">
-                      <input type="radio" class="custom-control-input" id="radioM" name="escala" value="M" formControlName="escala">
-                      <label class="custom-control-label" for="radioM">M- 07h às 12h  - 14h às 17h</label>
-                    </div>
-                    <div class="custom-control custom-radio my-1 mr-sm-2">
-                      <input type="radio" class="custom-control-input" id="radioMT" name="escala" value="MT" formControlName="escala">
-                      <label class="custom-control-label" for="radioMT">MT - 08h às 12h  -  14h às 18h</label>
-                    </div>
-                    <div class="custom-control custom-radio my-1 mr-sm-2">
-                      <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" formControlName="escala">
-                      <label class="custom-control-label" for="radioMS">M*- 08h às 12h Sábado</label>
-                    </div>
-                  </div>
+              <div class="row"> 
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="radioD" value="D" formControlName="escala">
+                  <label class="custom-control-label" for="radioD">D - 7h às 11h - 12 às 19h</label>
+                </div>
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="radioN" name="escala" value="N" formControlName="escala">
+                  <label class="custom-control-label" for="radioN">N - 19h às 21h  - 22h às 7h</label>
+                </div>
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="radioM" name="escala" value="M" formControlName="escala">
+                  <label class="custom-control-label" for="radioM">M- 07h às 12h  - 14h às 17h</label>
+                </div>
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="radioMT" name="escala" value="MT" formControlName="escala">
+                  <label class="custom-control-label" for="radioMT">MT - 08h às 12h  -  14h às 18h</label>
+                </div>
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" formControlName="escala">
+                  <label class="custom-control-label" for="radioMS">M*- 08h às 12h Sábado</label>
+                </div>
+              </div>
             </div>
+              <div class="form-row">
+                Começa em: 
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="true" formControlName="dia1">
+                  <label class="custom-control-label" for="dia1">Dia 1</label>
+                </div>
+                <div class="custom-control custom-radio my-1 mr-sm-2">
+                  <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="false" formControlName="dia1">
+                  <label class="custom-control-label" for="dia1">Dia 2</label>
+                  </div>
+                </div>
+              </div>
             <div class="row btn-adicionar">
               <button type="submit"  class="btn btn-primary">Adicionar</button>
              </div>
@@ -57,16 +69,18 @@
                 <th scope="col">#</th>
                  @for (c of calen; track c)
                  { 
-                  <th scope="col" style="font-size: 8px;"  ngSkipHydration>{{c}}</th> 
+                  <th scope="col" style="font-size: 8.5px;"  ngSkipHydration>{{c}}</th> 
                  }
               </tr>
             </thead>
             <tbody>
-              @for (fun of funcionario; track fun) 
+              @for (fun of escala; track fun) 
               {
                 <tr>
-                    <th scope="row">{{fun}}</th> 
-                    @for (esc of escala; track esc) {<td>{{esc}}</td>}
+                    <th scope="row">{{fun.nome}}</th> 
+                    @for (dias of fun.escala; track dias;let idx = $index) {
+                      <td>{{fun.escala[idx]}}</td>
+                    }
                 </tr>
               }
             </tbody>

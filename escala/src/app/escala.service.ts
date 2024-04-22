@@ -22,10 +22,18 @@ export class EscalaService {
     }
     return this.calendario;
   }
-  addEscala(escala){
-      for (let d=0; d<this.dias; d++){
-        console.log("no serviço é: "+escala);
-        this.escala.push(escala)
+  addEscala(inicio,escala){
+    this.escala = [];
+    for (let d=0; d<this.dias; d++){
+      if(inicio == 'true'){
+        this.escala[d] = escala;
+        this.escala[d+1] = '-';
+        d++;
+      }else{
+        this.escala[d] = '-';
+        this.escala[d+1] = escala;
+        d++;
+        }
       }
     return this.escala;
     }
