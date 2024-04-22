@@ -4,8 +4,8 @@ import { EscalaService } from './escala.service';
 import { FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import moment from '../../node_modules/moment';
 import '../../node_modules/moment/locale/pt-br';
+import { Funcionario } from './Interfaces/funcionario';
 
 @Component({
   selector: 'app-root',
@@ -28,15 +28,22 @@ export class AppComponent {
   checkoutForm = this.formBuilder.group({
     escolhaMes: '',
     escala: '',
-    SelectfuncionaiosLista:''
+    SelectfuncionaiosLista:'',
+    dia1:''
   });
 
   onSubmit(){
-    this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
-    this.calen = this.$services.addMes(this.checkoutForm.value);
-    this.escala = (this.$services.addEscala(this.checkoutForm.value.escala))
-    console.log("a escala é : "+this.checkoutForm.value.escala)
-    this.checkoutForm.reset();
-    
+      this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
+      if(this.checkoutForm.value.escolhaMes != undefined){
+        this.calen = this.$services.addMes(this.checkoutForm.value);
+      }
+      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,this.checkoutForm.value.escala))
+      this.checkoutForm.controls.escolhaMes.disable();
+      this.checkoutForm.reset();
+  }
+  preencheEscala(nomePessoa, escala){
+    console.log("escala recebida em preencher escala: "+escala)
+    let fun: Funcionario = ({nome: nomePessoa, escala: escala});
+    this.escala.push(fun);
   }          
 }
