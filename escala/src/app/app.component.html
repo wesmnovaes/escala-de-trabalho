@@ -1,3 +1,6 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+crossorigin="anonymous"></script>
 <div class="container-centro">
     <div class="row">
       <div class="col-3">
@@ -9,6 +12,12 @@
                    @for (pessoa of pessoas; track pessoa){
                     <option value={{pessoa}}>{{pessoa}}</option>}
                 </select>              
+            </div>
+            <div class="form-row">
+              <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Novo funcionário
+          </button>
             </div>
             <div class="form-row" style="padding-top: 3%;">
               <div class="row">
@@ -50,7 +59,7 @@
                   <label class="custom-control-label" for="dia1">Dia 1</label>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="false" formControlName="dia1">
+                  <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="false" formControlName="dia1"> 
                   <label class="custom-control-label" for="dia1">Dia 2</label>
                   </div>
                 </div>
@@ -85,6 +94,29 @@
               }
             </tbody>
           </table>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Funcionário</h5>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="funcionarioForm" (ngSubmit)="addFuncionario()"> 
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Nome Funcionário</label>
+                      <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario" required>
+                      <div id="nomefuncionario" class="form-text">Novos funcionários apareceram na lista do menu Funcionário</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
