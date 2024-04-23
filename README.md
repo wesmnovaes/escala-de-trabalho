@@ -1,3 +1,6 @@
+
+# Em desenvolvimento - Veja a branch develop para a versão mais recente
+
 # Escala de Trabalho
 
 Este é um aplicativo criado para solucionar um problema interno de uma empresa (hospital) que precisa
