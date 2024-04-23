@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { EscalaService } from './escala.service';
 import { FormBuilder } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import '../../node_modules/moment/locale/pt-br';
 import { Funcionario } from './Interfaces/funcionario';
@@ -32,7 +32,11 @@ export class AppComponent {
     dia1:''
   });
 
-  onSubmit(){
+  funcionarioForm = this.formBuilder.group({
+    nomefuncionario: ''
+  })
+
+    onSubmit(){
       this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
       if(this.checkoutForm.value.escolhaMes != undefined){
         this.calen = this.$services.addMes(this.checkoutForm.value);
@@ -41,9 +45,13 @@ export class AppComponent {
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
-  preencheEscala(nomePessoa, escala){
+    preencheEscala(nomePessoa, escala){
     console.log("escala recebida em preencher escala: "+escala)
     let fun: Funcionario = ({nome: nomePessoa, escala: escala});
     this.escala.push(fun);
-  }          
+  }  
+    addFuncionario(){
+    this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
+    this.funcionarioForm.reset();
+  }
 }
