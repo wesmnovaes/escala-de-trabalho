@@ -27,14 +27,17 @@ export class EscalaService {
     for (let d=0; d<this.dias; d++){
       if(inicio == 'true'){
         this.escala[d] = escala;
-        this.escala[d+1] = '-';
-        d++;
+        if(d+2 <= this.dias){
+          this.escala[d+1] = '-';
+        }
       }else{
         this.escala[d] = '-';
-        this.escala[d+1] = escala;
-        d++;
+        if(d+2 <= this.dias){
+          this.escala[d+1] = escala;
         }
       }
-    return this.escala;
+        d++;
+      }
+      return this.escala;
     }
 }
