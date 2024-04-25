@@ -29,7 +29,8 @@ export class AppComponent {
     escolhaMes: '',
     escala: '',
     SelectfuncionaiosLista:'',
-    dia1:''
+    dia1:'',
+    checkbox_trabalha_sabado:''
   });
 
   funcionarioForm = this.formBuilder.group({

@@ -42,8 +42,12 @@ crossorigin="anonymous"></script>
                   <label class="custom-control-label" for="radioM">M- 07h às 12h  - 14h às 17h</label>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioMT" name="escala" value="MT" formControlName="escala">
+                  <input type="radio" class="custom-control-input" onclick="EscondePerguntaSabado()" id="radioMT" name="escala" value="MT" formControlName="escala">
                   <label class="custom-control-label" for="radioMT">MT - 08h às 12h  -  14h às 18h</label>
+                  <div class="input-group-text" id="meio_periodo_sabado" style="display: none;">
+                    <input type="checkbox" name="checkbox_trabalha_sabado" id="checkbox_trabalha_sabado" formControlName="checkbox_trabalha_sabado">
+                    <label class="custom-control-label" style="padding-left: 2%;" for="checkbox_trabalha_sabado"> Meio período ao sábado?</label>
+                  </div>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
                   <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" formControlName="escala">
@@ -105,7 +109,7 @@ crossorigin="anonymous"></script>
                   <form [formGroup]="funcionarioForm" (ngSubmit)="addFuncionario()"> 
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Nome Funcionário</label>
-                      <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario" required>
+                      <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario">
                       <div id="nomefuncionario" class="form-text">Novos funcionários apareceram na lista do menu Funcionário</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
