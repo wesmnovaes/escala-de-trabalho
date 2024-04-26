@@ -30,30 +30,37 @@ crossorigin="anonymous"></script>
             <div class="form-row card-radio">
               <div class="row"> 
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioD" value="D" formControlName="escala">
+                  <input type="radio" class="custom-control-input" id="radioD" value="D" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioD">D - 7h às 11h - 12 às 19h</label>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioN" name="escala" value="N" formControlName="escala">
+                  <input type="radio" class="custom-control-input" id="radioN" name="escala" value="N" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioN">N - 19h às 21h  - 22h às 7h</label>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioM" name="escala" value="M" formControlName="escala">
+                  <input type="radio" class="custom-control-input" id="radioM" name="escala" value="M" onclick="desabilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioM">M- 07h às 12h  - 14h às 17h</label>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioMT" name="escala" value="MT" formControlName="escala">
+                  <input type="radio" class="custom-control-input" onclick="mostraPerguntaSabado();desabilitaDia1()" id="radioMT" name="escala" value="MT" formControlName="escala">
                   <label class="custom-control-label" for="radioMT">MT - 08h às 12h  -  14h às 18h</label>
+                  <div class="input-group-text" id="meio_periodo_sabado" style="display: none;">
+                    <input type="checkbox" name="checkbox_trabalha_sabado" id="checkbox_trabalha_sabado" value="false" formControlName="checkbox_trabalha_sabado">
+                    <label class="custom-control-label" style="padding-left: 2%;" for="checkbox_trabalha_sabado"> Meio período ao sábado?</label>
+                  </div>
                 </div>
                 <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" formControlName="escala">
+                  <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" onclick="desabilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioMS">M*- 08h às 12h Sábado</label>
                 </div>
               </div>
             </div>
-              <div class="form-row">
-                Começa em: 
-                <div class="custom-control custom-radio my-1 mr-sm-2">
+              <div class="form-row" style="display: none;" id="div_dia_inicial">
+                <div class="row comeca_em">
+                  Começa em: 
+                </div>
+                <div class="row dia_inicial">
+                <div class="form-row dia_inicial">
                   <div class="custom-control custom-radio my-1 mr-sm-2">
                   <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="true" formControlName="dia1">
                   <label class="custom-control-label" for="dia1">Dia 1</label>
@@ -62,6 +69,7 @@ crossorigin="anonymous"></script>
                   <input type="radio" class="custom-control-input" id="dia1" name="dia1" value="false" formControlName="dia1"> 
                   <label class="custom-control-label" for="dia1">Dia 2</label>
                   </div>
+                </div>
                 </div>
               </div>
             <div class="row btn-adicionar">
@@ -105,7 +113,7 @@ crossorigin="anonymous"></script>
                   <form [formGroup]="funcionarioForm" (ngSubmit)="addFuncionario()"> 
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Nome Funcionário</label>
-                      <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario" required>
+                      <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario">
                       <div id="nomefuncionario" class="form-text">Novos funcionários apareceram na lista do menu Funcionário</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
