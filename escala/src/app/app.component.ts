@@ -42,12 +42,12 @@ export class AppComponent {
       if(this.checkoutForm.value.escolhaMes != undefined){
         this.calen = this.$services.addMes(this.checkoutForm.value);
       }
-      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,this.checkoutForm.value.escala))
+      console.log("Valor do checkbox: "+this.checkoutForm.value.checkbox_trabalha_sabado)
+      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,this.checkoutForm.value.escala,this.checkoutForm.value.checkbox_trabalha_sabado))
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
     preencheEscala(nomePessoa, escala){
-    console.log("escala recebida em preencher escala: "+escala)
     let fun: Funcionario = ({nome: nomePessoa, escala: escala});
     this.escala.push(fun);
   }  
