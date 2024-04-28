@@ -33,6 +33,16 @@ export class AppComponent {
     checkbox_trabalha_sabado:''
   });
 
+  lancamentoFeriasForm = this.formBuilder.group({
+    nomefuncionarioFF: '',
+    SelectfuncionaiosListaFF:'',
+    dtInicialFF:'',
+    dtFimFF:'',
+    FeriasFF:'',
+    FaltaFF:''
+
+  })
+
   funcionarioForm = this.formBuilder.group({
     nomefuncionario: ''
   })
@@ -54,5 +64,8 @@ export class AppComponent {
     addFuncionario(){
     this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
     this.funcionarioForm.reset();
+  }
+  addFeriasFaltas(){
+    return true;
   }
 }
