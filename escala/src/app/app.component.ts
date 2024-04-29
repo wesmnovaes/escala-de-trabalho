@@ -34,12 +34,10 @@ export class AppComponent {
   });
 
   lancamentoFeriasForm = this.formBuilder.group({
-    nomefuncionarioFF: '',
     SelectfuncionaiosListaFF:'',
     dtInicialFF:'',
     dtFimFF:'',
-    FeriasFF:'',
-    FaltaFF:''
+    radioFF:''
 
   })
 
@@ -66,6 +64,9 @@ export class AppComponent {
     this.funcionarioForm.reset();
   }
   addFeriasFaltas(){
-    return true;
+   if(this.lancamentoFeriasForm.value.radioFF == 'falta'){
+    console.log("cheguei aqui")
+      this.$services.addFalta(this.escala,this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,this.lancamentoFeriasForm.value.dtInicialFF,this.lancamentoFeriasForm.value.dtFimFF)
+   }
   }
 }

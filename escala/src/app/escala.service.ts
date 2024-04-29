@@ -61,4 +61,21 @@ export class EscalaService {
     }
       return this.escala;
     }
+    addFalta(escala,funcio,dt_inicio,dt_fim){
+      console.log("cheguei no serviço")
+      let idx = escala.findIndex((x) => x.nome = funcio)
+      let escala_func = escala[idx].escala;
+      for(let c = 0; c < escala_func.length; c++){
+       let dia = moment(this.mes_ano).add(c, 'days').format('YYYY-MM-DD')
+        console.log(dia)
+        console.log(dt_inicio)
+        console.log(dt_fim)
+        if(dia >= dt_inicio && dia <= dt_fim ){
+          console.log("entrei no if!")
+          escala_func[c] = 'F'
+        }
+      }
+
+    }
 }
+
