@@ -32,15 +32,12 @@ export class AppComponent {
     dia1:'',
     checkbox_trabalha_sabado:''
   });
-
   lancamentoFeriasForm = this.formBuilder.group({
     SelectfuncionaiosListaFF:'',
     dtInicialFF:'',
     dtFimFF:'',
     radioFF:''
-
   })
-
   funcionarioForm = this.formBuilder.group({
     nomefuncionario: ''
   })
@@ -50,23 +47,25 @@ export class AppComponent {
       if(this.checkoutForm.value.escolhaMes != undefined){
         this.calen = this.$services.addMes(this.checkoutForm.value);
       }
-      console.log("Valor do checkbox: "+this.checkoutForm.value.checkbox_trabalha_sabado)
-      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,this.checkoutForm.value.escala,this.checkoutForm.value.checkbox_trabalha_sabado))
+      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,
+                                                                                                  this.checkoutForm.value.escala,
+                                                                                                  this.checkoutForm.value.checkbox_trabalha_sabado))
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
     preencheEscala(nomePessoa, escala){
-    let fun: Funcionario = ({nome: nomePessoa, escala: escala});
-    this.escala.push(fun);
+      let fun: Funcionario = ({nome: nomePessoa, escala: escala});
+      this.escala.push(fun);
   }  
     addFuncionario(){
-    this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
-    this.funcionarioForm.reset();
+      this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
+      this.funcionarioForm.reset();
   }
-  addFeriasFaltas(){
-   if(this.lancamentoFeriasForm.value.radioFF == 'falta'){
-    console.log("cheguei aqui")
-      this.$services.addFalta(this.escala,this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,this.lancamentoFeriasForm.value.dtInicialFF,this.lancamentoFeriasForm.value.dtFimFF)
-   }
-  }
+    addFeriasFaltas(){
+        this.escala =  this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
+                                               this.escala,
+                                               this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,
+                                               this.lancamentoFeriasForm.value.dtInicialFF,
+                                               this.lancamentoFeriasForm.value.dtFimFF)
+      }
 }
