@@ -29,9 +29,8 @@ export class EscalaService {
     if(escala == 'MT'){
       for (let d=0; d<this.dias; d++){
         dia_semana = moment(this.mes_ano).add(d,'days').format('dddd'); 
-        console.log("esse é o dia da semana: || "+dia_semana);
         if(dia_semana == 'sábado' || dia_semana == 'domingo'){
-          if(checkbox_trabalha_sabado){
+          if(checkbox_trabalha_sabado && dia_semana == 'sábado'){
             this.escala[d] = 'M*';  
           }else{
             this.escala[d] = '-';
@@ -60,5 +59,24 @@ export class EscalaService {
           }
     }
       return this.escala;
+    }
+    addFalta(ausencia,escala,funcio,dt_inicio,dt_fim){
+      console.log(ausencia);
+      let idx = escala.findIndex((x) => x.nome == funcio )
+      let escala_func = escala[idx].escala;
+      for(let c = 0; c < escala_func.length; c++){
+       let dia = moment(this.mes_ano).add(c, 'days').format('YYYY-MM-DD')
+        if(dia >= dt_inicio && dia <= dt_fim ){
+          if(ausencia == 'falta'){
+            if(escala_func[c] != '-'){
+              escala_func[c] = 'A*'
+            }
+          }else if (ausencia == 'ferias') {
+            escala_func[c] = 'Fe*'
+          }    
+        }  
+      }
+    escala[idx].escala = escala_func;
+    return escala;
     }
 }
