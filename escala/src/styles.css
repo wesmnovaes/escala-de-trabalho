@@ -67,3 +67,15 @@ body{
   .comeca_em{
     padding-left: 5%;
   }
+  .img_ico{
+    width: 20px;
+    height: 20px;
+    padding-bottom: 2%;
+    padding-left: 2%;
+  }
+  .ico_navbar{
+    width: 25px;
+    height: 25px;
+    margin-left: 4%;
+    margin-right: 4%;
+  }
