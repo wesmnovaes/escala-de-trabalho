@@ -9,7 +9,7 @@ body{
     padding: 1%;
     background-color: #d8e6f3 !important;
     border-radius: 10px;
-    width: 90%;
+    /*width: 90%;*/
 }
 .card-checkbox{
     margin-top: 5%;
@@ -78,4 +78,8 @@ body{
     height: 25px;
     margin-left: 4%;
     margin-right: 4%;
+  }
+  #tabela_escala{
+    width: 900px;
+    height: 400px;
   }
