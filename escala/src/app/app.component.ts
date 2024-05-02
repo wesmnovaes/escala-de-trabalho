@@ -58,11 +58,9 @@ export class AppComponent {
         const pdf = new jsPDF({
           orientation: 'l',
           unit: 'mm',
-          format: 'a4',
-          /*putOnlyUsedFonts:true*/
+          format: 'a4'
          });
         pdf.addImage(canvas.toDataURL('image/PNG'),'PNG',5,5,280,120,'','SLOW',0);
-        pdf.setFontSize(12)
         pdf.save('Escala - '+this.mes);
       })
     }
