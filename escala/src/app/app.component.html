@@ -6,7 +6,7 @@
 </nav>
 <div class="container-centro ">
     <div class="row">
-      <div class="col-3">
+      <div class="col">
         <div class="card card-form poppins-regular">
           <!-- Formuário lateral -->
           <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"> 
@@ -89,7 +89,7 @@
         </div>
       </div>
       <!-- Tabela de escala -->
-      <div class="col-9" style="padding-left: 0%;">
+      <div class="col" style="padding-left: 0%;">
         <div class="card card-table" id="tabela_escala">
         <table class="table">
             <thead>
@@ -104,7 +104,7 @@
             <tbody>
               @for (fun of escala; track fun) 
               {
-                <tr>
+                <tr style="font-size: 10.5px;">
                     <th scope="row">{{fun.nome}}</th> 
                     @for (dias of fun.escala; track dias;let idx = $index) {
                       <td>{{fun.escala[idx]}}</td>
@@ -187,7 +187,7 @@
       </div>
       <div class="row">
         <div class="d-flex flex-row-reverse bd-highlight">
-          <div class="p-2 bd-highlight"><button class="btn btn-success" (click)="gerarPDF()"> <img src="../assets/print.ico" class="img_ico"> Print </button></div> 
+          <div class="p-2 bd-highlight"><button class="btn btn-success" (click)="gerarPDF()"> <img src="../assets/print.ico" class="img_ico"> Salvar para pdf </button></div> 
         </div>
       </div>
     </div>
