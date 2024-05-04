@@ -26,8 +26,8 @@ body{
     box-shadow: 11px 11px 18px -17px rgba(0,0,0,0.54);
 }
 .card-table{
-    display: inline-block;
-    overflow-x:scroll;
+/*    display: inline-block;
+    overflow-x:scroll; */
 }
 .poppins-regular {
     font-family: "Poppins", sans-serif;
