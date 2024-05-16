@@ -38,7 +38,14 @@
               </div>
             </div>
             <div class="form-row card-radio">
-              <div class="row"> 
+              @for (hor of horarios; track hor){
+              <div class="custom-control custom-radio my-1 mr-sm-2">
+                <input type="radio" class="custom-control-input" id="radioD" value="{{hor.sigla}}" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
+                <label class="custom-control-label" for="radioD">{{hor.desc}}</label>
+              </div>
+            }
+              <!-- versão em produção
+                div class="row"> 
                 <div class="custom-control custom-radio my-1 mr-sm-2">
                   <input type="radio" class="custom-control-input" id="radioD" value="D" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioD">D - 7h às 11h - 12 às 19h</label>
@@ -63,7 +70,7 @@
                   <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" onclick="desabilitaDia1();EscondePerguntaSabado()" formControlName="escala">
                   <label class="custom-control-label" for="radioMS">M*- 08h às 12h Sábado</label>
                 </div>
-              </div>
+              </div -->
             </div>
               <div class="form-row" style="display: none;" id="div_dia_inicial">
                 <div class="row comeca_em">

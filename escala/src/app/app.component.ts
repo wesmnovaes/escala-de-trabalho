@@ -8,6 +8,7 @@ import '../../node_modules/moment/locale/pt-br';
 import { Funcionario } from './Interfaces/funcionario';
 import { jsPDF }  from 'jspdf';
 import html2canvas from 'html2canvas';
+import { horarios } from './Interfaces/horarios';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,12 @@ export class AppComponent {
   mes;
   
   // dados para teste
+  horarios:any = [{desc: '7h às 11h - 12 às 19h', sigla: 'D', fds: 'S'}, 
+                  {desc: '19h às 21h - 22h às 7h', sigla: 'N', fds: 'S'},
+                  {desc: '07h às 12h - 14h às 17h', sigla: 'M', fds: 'S'},
+                  {desc: '08h às 12h - 14h às 18h', sigla: 'MT', fds: 'S'},
+                  {desc: '08h às 12h Sábado', sigla: 'M*', fds: 'S'}
+                ]
   calen:any[] = [ "1, seg"	,"2, ter"	,"3, qua"	,"4, qui"	,"5, sex"	,"6, sáb"	,"7, dom"	,"8, seg"	,"9, ter"	,"10, qua"	,"11, qui"	,"12, sex"	,"13, sáb	","14, dom"	,"15, seg"	,"16, ter"	,"17, qua"	,"18, qui"	,"19, sex"	,"20, sáb"	,"21, dom	","22, seg"	,"23, ter"	,"24, qua"	,"25, qui"	,"26, sex	","27, sáb	","28, dom","29, seg","30, ter","31, ter" ]
   escala:any[] = [
                   {nome:"Maria", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
