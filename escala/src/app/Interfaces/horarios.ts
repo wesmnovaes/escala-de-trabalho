@@ -1,12 +1,7 @@
-export interface horarios {
+export interface horario {
     desc: string;
     sigla: string;
-    fds: string;
-
-    /* fds identificador de funcionários que 
-    trabalham ou não Sábado / Domingo
-    S - SIM
-    N - NÃO
-    M - MEIO PERÍODO AO SÁBADO
-    */
+    legenda: string;
+    he: string;
+/*he: horário especial (final de semana/sábado e domingo)*/
 }
