@@ -21,24 +21,14 @@ import { horario } from './Interfaces/horarios';
 
 export class AppComponent {
 
-  //calen:any[] = [] 
-  //escala:any[] = []
+  calen:any[] = [] 
+  escala:any[] = []
   pessoas = ['Maria', 'José','Júlia','Pedro']
   mes;
   
   // dados para teste
   horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}
-                ]
-  calen:any[] = [ "1, seg"	,"2, ter"	,"3, qua"	,"4, qui"	,"5, sex"	,"6, sáb"	,"7, dom"	,"8, seg"	,"9, ter"	,"10, qua"	,"11, qui"	,"12, sex"	,"13, sáb	","14, dom"	,"15, seg"	,"16, ter"	,"17, qua"	,"18, qui"	,"19, sex"	,"20, sáb"	,"21, dom	","22, seg"	,"23, ter"	,"24, qua"	,"25, qui"	,"26, sex	","27, sáb	","28, dom","29, seg","30, ter","31, ter" ]
-  escala:any[] = [
-                  {nome:"Maria", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"João", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Pedro", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Julia", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Maria Alice", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]}
                 ]  
-  
-  
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
   funcionario:any[] = [];
