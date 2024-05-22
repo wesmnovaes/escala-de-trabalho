@@ -46,33 +46,6 @@
                 <label class="custom-control-label" for="radioD">{{hor.desc}}</label>
               </div>
             }
-              <!-- versão em produção
-                div class="row"> 
-                <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioD" value="D" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
-                  <label class="custom-control-label" for="radioD">D - 7h às 11h - 12 às 19h</label>
-                </div>
-                <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioN" name="escala" value="N" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
-                  <label class="custom-control-label" for="radioN">N - 19h às 21h  - 22h às 7h</label>
-                </div>
-                <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioM" name="escala" value="M" onclick="desabilitaDia1();EscondePerguntaSabado()" formControlName="escala">
-                  <label class="custom-control-label" for="radioM">M- 07h às 12h  - 14h às 17h</label>
-                </div>
-                <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" onclick="mostraPerguntaSabado();desabilitaDia1()" id="radioMT" name="escala" value="MT" formControlName="escala">
-                  <label class="custom-control-label" for="radioMT">MT - 08h às 12h  -  14h às 18h</label>
-                  <div class="input-group-text" id="meio_periodo_sabado" style="display: none;">
-                    <input type="checkbox" name="checkbox_trabalha_sabado" id="checkbox_trabalha_sabado" value="false" formControlName="checkbox_trabalha_sabado">
-                    <label class="custom-control-label" style="padding-left: 2%;" for="checkbox_trabalha_sabado"> Meio período ao sábado?</label>
-                  </div>
-                </div>
-                <div class="custom-control custom-radio my-1 mr-sm-2">
-                  <input type="radio" class="custom-control-input" id="radioS" name="escala" value="M*" onclick="desabilitaDia1();EscondePerguntaSabado()" formControlName="escala">
-                  <label class="custom-control-label" for="radioMS">M*- 08h às 12h Sábado</label>
-                </div>
-              </div -->
             </div>
               <div class="form-row" style="display: none;" id="div_dia_inicial">
                 <div class="row comeca_em">
@@ -210,27 +183,34 @@
                         <label for="sigla_escala" class="form-label">Legenda</label>
                         <input type="text" class="form-control" id="sigla_escala" aria-describedby="sigla_escala" formControlName="legenda_escala">
                       </div>
-                      <div class="form-row">
-                        <label for="sigla_escala" class="form-label">Sigla</label>
-                        <input type="text" class="form-control" id="sigla_escala" aria-describedby="sigla_escala" formControlName="sigla_escala">
+                      <div class="form-row w-25">
+                          <label for="sigla_escala" class="form-label">Sigla</label>
+                          <input type="text" class="form-control" id="sigla_escala" aria-describedby="sigla_escala" formControlName="sigla_escala">                       
                       </div>
-                      <div class="form-text" style="padding-bottom: 5px;">Horários especiais:</div>
+                      <div class="form-text" style="padding-bottom: 5px;">Dias especiais:</div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="s" id="escala_check_he">
+                        <input class="form-check-input" name="escala_check_s" type="checkbox" value="s" id="escala_check_he">
                         <label class="form-check-label" for="escala_check_s">
                           Sábado
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="sm" id="escala_check_he">
+                        <input class="form-check-input" name="escala_check_sm" type="checkbox" value="sm" id="escala_check_he">
                         <label class="form-check-label" for="escala_check_sm">
                           Sábado meio-período
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="d" id="escala_check_he">
+                        <input class="form-check-input" name="escala_check_d" type="checkbox" value="d" id="escala_check_he">
                         <label class="form-check-label" for="escala_check_d">
                           Domingo
+                        </label>
+                      </div>
+                      <div class="form-text" style="padding-bottom: 5px;">Horários especiais:</div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="d" id="escala_check_da">
+                        <label class="form-check-label" for="escala_check_da">
+                          Dias alternados
                         </label>
                       </div>
                     </div>
