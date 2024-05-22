@@ -8,6 +8,7 @@ import '../../node_modules/moment/locale/pt-br';
 import { Funcionario } from './Interfaces/funcionario';
 import { jsPDF }  from 'jspdf';
 import html2canvas from 'html2canvas';
+import { horario } from './Interfaces/horarios';
 
 @Component({
   selector: 'app-root',
@@ -20,22 +21,14 @@ import html2canvas from 'html2canvas';
 
 export class AppComponent {
 
-  //calen:any[] = [] 
-  //escala:any[] = []
+  calen:any[] = [] 
+  escala:any[] = []
   pessoas = ['Maria', 'José','Júlia','Pedro']
   mes;
   
   // dados para teste
-  calen:any[] = [ "1, seg"	,"2, ter"	,"3, qua"	,"4, qui"	,"5, sex"	,"6, sáb"	,"7, dom"	,"8, seg"	,"9, ter"	,"10, qua"	,"11, qui"	,"12, sex"	,"13, sáb	","14, dom"	,"15, seg"	,"16, ter"	,"17, qua"	,"18, qui"	,"19, sex"	,"20, sáb"	,"21, dom	","22, seg"	,"23, ter"	,"24, qua"	,"25, qui"	,"26, sex	","27, sáb	","28, dom","29, seg","30, ter","31, ter" ]
-  escala:any[] = [
-                  {nome:"Maria", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"João", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Pedro", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Julia", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]},
-                  {nome:"Maria Alice", escala:["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-"]}
+  horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}
                 ]  
-  
-  
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
   funcionario:any[] = [];
@@ -55,6 +48,12 @@ export class AppComponent {
   })
   funcionarioForm = this.formBuilder.group({
     nomefuncionario: ''
+  })
+  novaEscalaForm = this.formBuilder.group({
+    desc_escala: '',
+    sigla_escala:'',
+    legenda_escala: '',
+    escala_check_he:''
   })
 
     gerarPDF(){
@@ -92,11 +91,19 @@ export class AppComponent {
       this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
       this.funcionarioForm.reset();
   }
-    addFeriasFaltas(){
+  addFeriasFaltas(){
         this.escala =  this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
                                                this.escala,
                                                this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,
                                                this.lancamentoFeriasForm.value.dtInicialFF,
                                                this.lancamentoFeriasForm.value.dtFimFF)
-      }
+  }
+  addEscalaHorario(){
+    let hor: horario = ({desc:'',legenda:'',he:'',sigla:''})
+    hor.desc = this.novaEscalaForm.value.desc_escala! 
+    hor.he = this.novaEscalaForm.value.escala_check_he!
+    hor.sigla = this.novaEscalaForm.value.sigla_escala!
+    hor.legenda = this.novaEscalaForm.value.legenda_escala!
+    this.horarios.push(hor)
+ }
 }
