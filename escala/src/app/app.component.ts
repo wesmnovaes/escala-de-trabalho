@@ -27,8 +27,9 @@ export class AppComponent {
   mes;
   
   // dados para teste
-  horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}
-                ]  
+  //horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}]
+  horarios:any = []
+
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
   funcionario:any[] = [];
@@ -37,8 +38,7 @@ export class AppComponent {
     escolhaMes: '',
     escala: '',
     SelectfuncionaiosLista:'',
-    dia1:'',
-    checkbox_trabalha_sabado:''
+    dia1:''
   });
   lancamentoFeriasForm = this.formBuilder.group({
     SelectfuncionaiosListaFF:'',
@@ -78,8 +78,11 @@ export class AppComponent {
         this.calen = this.$services.addMes(this.checkoutForm.value);
       }
       this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,
-                                                                                                  this.checkoutForm.value.escala,
-                                                                                                  this.checkoutForm.value.checkbox_trabalha_sabado))
+                                                                                                  this.checkoutForm.value.escala))
+
+        let d: horario = JSON.parse(this.checkoutForm.value.escala!)
+        let dd = d.desc
+        console.log("hor: "+dd)
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }

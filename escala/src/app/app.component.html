@@ -42,7 +42,7 @@
             <div class="form-row card-radio">
               @for (hor of horarios; track hor){
               <div class="custom-control custom-radio my-1 mr-sm-2">
-                <input type="radio" class="custom-control-input" id="radioD" value="{{hor.sigla}}" onclick="habilitaDia1();EscondePerguntaSabado()" formControlName="escala">
+                <input type="radio" class="custom-control-input" id="radioD" value="[desc:{{hor}}" onclick="habilitaDia1();" formControlName="escala">
                 <label class="custom-control-label" for="radioD">{{hor.desc}}</label>
               </div>
             }

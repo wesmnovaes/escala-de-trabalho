@@ -7,7 +7,7 @@ import moment from '../../node_modules/moment';
 export class EscalaService {
 
   calendario:any[] = [];
-  escala:any = [];  
+  //escala:any = [];  
   dias = 0;
   mes_ano = '';
   constructor(){}
@@ -23,7 +23,11 @@ export class EscalaService {
     }
     return this.calendario;
   }
-  addEscala(inicio,escala,checkbox_trabalha_sabado){
+  addEscala(dia1, escala){
+      console.log("dia1: "+dia1)  
+      console.log(escala.desc,escala.sigla,escala.legenda,escala.he)
+  }
+  /*addEscala(inicio,escala){
     this.escala = [];
     let dia_semana = ''
     if(escala == 'MT'){
@@ -59,9 +63,8 @@ export class EscalaService {
           }
     }
       return this.escala;
-    }
+    }*/
     addFalta(ausencia,escala,funcio,dt_inicio,dt_fim){
-      console.log(ausencia);
       let idx = escala.findIndex((x) => x.nome == funcio )
       let escala_func = escala[idx].escala;
       for(let c = 0; c < escala_func.length; c++){
