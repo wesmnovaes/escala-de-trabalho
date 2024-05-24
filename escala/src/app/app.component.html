@@ -40,10 +40,10 @@
               </div>
             </div>
             <div class="form-row card-radio">
-              @for (hor of horarios; track hor){
+              @for (hor of horarios; track hor;let idx = $index){
               <div class="custom-control custom-radio my-1 mr-sm-2">
-                <input type="radio" class="custom-control-input" id="radioD" value="[desc:{{hor}}" onclick="habilitaDia1();" formControlName="escala">
-                <label class="custom-control-label" for="radioD">{{hor.desc}}</label>
+                <input type="radio" class="custom-control-input" id="radio{{idx}}" value="{{idx}}" onclick="habilitaDia1();" formControlName="escala">
+                <label class="custom-control-label" for="radio{{idx}}">{{hor.desc}}</label>
               </div>
             }
             </div>

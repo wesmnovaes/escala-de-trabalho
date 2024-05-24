@@ -80,9 +80,8 @@ export class AppComponent {
       this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,
                                                                                                   this.checkoutForm.value.escala))
 
-        let d: horario = JSON.parse(this.checkoutForm.value.escala!)
-        let dd = d.desc
-        console.log("hor: "+dd)
+    console.log("valor index: "+this.checkoutForm.value.escala)
+
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
