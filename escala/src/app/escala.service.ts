@@ -23,9 +23,9 @@ export class EscalaService {
     }
     return this.calendario;
   }
-  addEscala(dia1, escala){
+  addEscala(dia1, hor){
       console.log("dia1: "+dia1)  
-      console.log(escala.desc,escala.sigla,escala.legenda,escala.he)
+      console.log("horario: "+"\"+"+"Descrição: "+hor.desc, "Sigla: "+hor.sigla + "Legenda: "+hor.legenda, "he: "+hor.he)
   }
   /*addEscala(inicio,escala){
     this.escala = [];
