@@ -53,7 +53,9 @@ export class AppComponent {
     desc_escala: '',
     sigla_escala:'',
     legenda_escala: '',
-    escala_check_he:''
+    escala_check_s:'',
+    escala_check_dom:'',
+    escala_check_al: ''
   })
 
     gerarPDF(){
@@ -77,11 +79,9 @@ export class AppComponent {
         this.mes = this.checkoutForm.value.escolhaMes;
         this.calen = this.$services.addMes(this.checkoutForm.value);
       }
-      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,this.$services.addEscala(this.checkoutForm.value.dia1,
-                                                                                                  this.checkoutForm.value.escala))
-
-    console.log("valor index: "+this.checkoutForm.value.escala)
-
+      let set_hor = this.horarios[this.checkoutForm.value.escala!]
+      this.preencheEscala(this.checkoutForm.value.SelectfuncionaiosLista,
+                          this.$services.addEscala(this.checkoutForm.value.dia1, set_hor))
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
@@ -101,11 +101,14 @@ export class AppComponent {
                                                this.lancamentoFeriasForm.value.dtFimFF)
   }
   addEscalaHorario(){
-    let hor: horario = ({desc:'',legenda:'',he:'',sigla:''})
-    hor.desc = this.novaEscalaForm.value.desc_escala! 
-    hor.he = this.novaEscalaForm.value.escala_check_he!
-    hor.sigla = this.novaEscalaForm.value.sigla_escala!
-    hor.legenda = this.novaEscalaForm.value.legenda_escala!
+    let hor: horario = ({desc:this.novaEscalaForm.value.desc_escala!,
+                         sigla:this.novaEscalaForm.value.sigla_escala!,
+                         legenda:this.novaEscalaForm.value.legenda_escala!,
+                         sab:this.novaEscalaForm.value.escala_check_s!,
+                         dom:this.novaEscalaForm.value.escala_check_dom!,
+                         altern:this.novaEscalaForm.value.escala_check_al!})
+    console.log("dom: "+hor.dom, " sab: "+hor.sab, " altern: "+hor.altern)  
     this.horarios.push(hor)
+    this.novaEscalaForm.reset();
  }
 }
