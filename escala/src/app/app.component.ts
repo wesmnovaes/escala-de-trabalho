@@ -107,7 +107,6 @@ export class AppComponent {
                          sab:this.novaEscalaForm.value.escala_check_s!,
                          dom:this.novaEscalaForm.value.escala_check_dom!,
                          altern:this.novaEscalaForm.value.escala_check_al!})
-    console.log("dom: "+hor.dom, " sab: "+hor.sab, " altern: "+hor.altern)  
     this.horarios.push(hor)
     this.novaEscalaForm.reset();
  }
