@@ -7,7 +7,7 @@ import moment from '../../node_modules/moment';
 export class EscalaService {
 
   calendario:any[] = [];
-  //escala:any = [];  
+  escala:any = [];  
   dias = 0;
   mes_ano = '';
   constructor(){}
@@ -23,47 +23,36 @@ export class EscalaService {
     }
     return this.calendario;
   }
-  addEscala(dia1, hor){
-      console.log("dia1: "+dia1)  
-      console.log("horario: "+"\"+"+"Descrição: "+hor.desc, "Sigla: "+hor.sigla + "Legenda: "+hor.legenda, "he: "+hor.he)
-  }
-  /*addEscala(inicio,escala){
+  addEscala(dia1, hor){  
     this.escala = [];
     let dia_semana = ''
-    if(escala == 'MT'){
-      for (let d=0; d<this.dias; d++){
-        dia_semana = moment(this.mes_ano).add(d,'days').format('dddd'); 
-        if(dia_semana == 'sábado' || dia_semana == 'domingo'){
-          if(checkbox_trabalha_sabado && dia_semana == 'sábado'){
-            this.escala[d] = 'M*';  
+    for (let d=0; d<this.dias; d++){
+      dia_semana = moment(this.mes_ano).add(d,'days').format('dddd'); 
+      if(dia_semana == 'sábado' && !hor.sab){
+          this.escala[d] = '-'
+        }else if(dia_semana == 'domingo' && !hor.dom){
+          this.escala[d] = '-'
           }else{
-            this.escala[d] = '-';
-          }
-        }else{
-          this.escala[d] = escala;
-          if(d+2 <= this.dias){
-            this.escala[d+1] = '-';
-          }
-        } 
-      }
-    } else{
-        for (let d=0; d<this.dias; d++){
-          if(inicio == 'true'){
-            this.escala[d] = escala;
-            if(d+2 <= this.dias){
+          if(hor.altern){
+            if(dia1 == 'true'){             
+              this.escala[d] = hor.sigla;
+              if(d+2 <= this.dias){
               this.escala[d+1] = '-';
+              }
+            }else{
+              this.escala[d] = '-';
+              if(d+2 <= this.dias){
+                this.escala[d+1] = hor.sigla
+              }
             }
-          }else{
-            this.escala[d] = '-';
-            if(d+2 <= this.dias){
-              this.escala[d+1] = escala;
-            }
-          }
             d++;
+          }else{
+            this.escala[d] = hor.sigla
           }
-    }
-      return this.escala;
-    }*/
+        }
+      }
+      return this.escala
+  }  
     addFalta(ausencia,escala,funcio,dt_inicio,dt_fim){
       let idx = escala.findIndex((x) => x.nome == funcio )
       let escala_func = escala[idx].escala;
