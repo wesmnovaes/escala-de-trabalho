@@ -47,7 +47,8 @@ export class AppComponent {
     radioFF:''
   })
   funcionarioForm = this.formBuilder.group({
-    nomefuncionario: ''
+    nomefuncionario: '',
+    obsfuncionario: ''
   })
   novaEscalaForm = this.formBuilder.group({
     desc_escala: '',
@@ -86,7 +87,7 @@ export class AppComponent {
       this.checkoutForm.reset();
   }
     preencheEscala(nomePessoa, escala){
-      let fun: Funcionario = ({nome: nomePessoa, escala: escala});
+      let fun: Funcionario = ({nome: nomePessoa, obs: '123', escala: escala});
       this.escala.push(fun);
   }  
     addFuncionario(){
