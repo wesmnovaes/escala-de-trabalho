@@ -76,7 +76,9 @@
         <table class="table">
             <thead>
               <tr >
-                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Obs</th>
+
                  @for (c of calen; track c)
                  { 
                   <th scope="col" style="font-size: 8.5px;"  ngSkipHydration>{{c}}</th> 
@@ -87,7 +89,8 @@
               @for (fun of escala; track fun) 
               {
                 <tr style="font-size: 10.5px;">
-                    <th scope="row">{{fun.nome}}</th> 
+                    <th scope="row">{{fun.nome}}</th>
+                    <th scope="row">{{fun.obs}}</th> 
                     @for (dias of fun.escala; track dias;let idx = $index) {
                       <td>{{fun.escala[idx]}}</td>
                     }
@@ -108,6 +111,10 @@
                       <label for="nomefuncionario" class="form-label">Nome Funcionário</label>
                       <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario">
                       <div id="nomefuncionario" class="form-text">Novos funcionários apareceram na lista do menu Funcionário</div>
+                    </div>
+                    <div class="mb-3 w-25">
+                      <label for="obs-fun" class="form-label">Obs</label>
+                      <input type="text" class="form-control" id="obs-fun" formControlName="obsfuncionario">  
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                   </form>
