@@ -23,7 +23,10 @@ export class AppComponent {
 
   calen:any[] = [] 
   escala:any[] = []
-  pessoas = ['Maria', 'José','Júlia','Pedro']
+  pessoas = [ {nome: 'Maria', obs: '10131456-TO', escala: []},
+              {nome: 'João', obs: '10131456-TO', escala: []},
+              {nome: 'Pedro', obs: '10131456-TO', escala: []},
+              {nome: 'Julia', obs: '10131456-TO', escala: []}];
   mes;
   
   // dados para teste
@@ -75,7 +78,6 @@ export class AppComponent {
     }
 
     onSubmit(){
-      this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
       if(this.checkoutForm.value.escolhaMes != undefined){
         this.mes = this.checkoutForm.value.escolhaMes;
         this.calen = this.$services.addMes(this.checkoutForm.value);
@@ -86,12 +88,14 @@ export class AppComponent {
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
-    preencheEscala(nomePessoa, escala){
-      let fun: Funcionario = ({nome: nomePessoa, obs: '123', escala: escala});
+    preencheEscala(funIndex, escala){
+      let fun = this.pessoas.at(funIndex)!
+      fun.escala = escala
       this.escala.push(fun);
   }  
     addFuncionario(){
-      this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
+      let fun: Funcionario = ({nome: this.funcionarioForm.value.nomefuncionario!, obs: this.funcionarioForm.value.obsfuncionario!, escala: []});
+      this.pessoas.push(fun)
       this.funcionarioForm.reset();
   }
   addFeriasFaltas(){
