@@ -139,7 +139,7 @@
                         <label for="SelectfuncionaiosListaFF"><h5>Funcionário</h5></label>
                         <select class="custom-select" id="SelectfuncionaiosListaFF"  formControlName="SelectfuncionaiosListaFF">
                            @for (pessoa of pessoas; track pessoa){
-                            <option value={{pessoa}}>{{pessoa}}</option>}
+                            <option value={{pessoa}}>{{pessoa.nome}}</option>}
                         </select>              
                       </div>
                       <div class="form-row">
