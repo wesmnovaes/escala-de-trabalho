@@ -30,12 +30,12 @@ export class AppComponent {
   mes;
   
   // dados para teste
-  //horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}]
-  horarios:any = []
+  horarios:any = [{
+    desc: "8h às 18hh ", sigla: "C", legenda: "Comercial", sab: true, dom: false, altern: false}]
 
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
-  funcionario:any[] = [];
+  //funcionario:any[] = [];
 
   checkoutForm = this.formBuilder.group({
     escolhaMes: '',
