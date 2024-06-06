@@ -12,9 +12,9 @@
           <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"> 
             <div class="form-row">
                 <label for="SelectfuncionaiosLista"><h5>Funcionário</h5></label>
-                <select class="custom-select" id="SelectfuncionaiosLista"  formControlName="SelectfuncionaiosLista">
-                   @for (pessoa of pessoas; track pessoa){
-                    <option value={{pessoa}}>{{pessoa}}</option>}
+                <select class="custom-select" id="SelectfuncionaiosLista" formControlName="SelectfuncionaiosLista">
+                   @for (pessoa of pessoas; track pessoa;let idxf = $index){
+                    <option value="{{idxf}}"> {{pessoa.nome}} </option>}
                 </select>              
             </div>
             <div class="form-row">
@@ -73,13 +73,15 @@
       <!-- Tabela de escala -->
       <div class="col-9" style="padding-left: 0%;">
         <div class="card card-table" id="tabela_escala">
-        <table class="table">
+        <table class="table " style="font-size: 8.5px;">
             <thead>
               <tr >
-                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Obs</th>
+
                  @for (c of calen; track c)
                  { 
-                  <th scope="col" style="font-size: 8.5px;"  ngSkipHydration>{{c}}</th> 
+                  <th scope="col"  ngSkipHydration>{{c}}</th> 
                  }
               </tr>
             </thead>
@@ -87,7 +89,8 @@
               @for (fun of escala; track fun) 
               {
                 <tr style="font-size: 10.5px;">
-                    <th scope="row">{{fun.nome}}</th> 
+                    <th scope="row">{{fun.nome}}</th>
+                    <th scope="row">{{fun.obs}}</th> 
                     @for (dias of fun.escala; track dias;let idx = $index) {
                       <td>{{fun.escala[idx]}}</td>
                     }
@@ -108,6 +111,10 @@
                       <label for="nomefuncionario" class="form-label">Nome Funcionário</label>
                       <input type="email" class="form-control" id="nomefuncionario" aria-describedby="nomefuncionario" formControlName="nomefuncionario">
                       <div id="nomefuncionario" class="form-text">Novos funcionários apareceram na lista do menu Funcionário</div>
+                    </div>
+                    <div class="mb-3 w-25">
+                      <label for="obs-fun" class="form-label">Obs</label>
+                      <input type="text" class="form-control" id="obs-fun" formControlName="obsfuncionario">  
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                   </form>
@@ -130,9 +137,9 @@
                     <div class="mb-3">
                       <div class="form-row">
                         <label for="SelectfuncionaiosListaFF"><h5>Funcionário</h5></label>
-                        <select class="custom-select" id="SelectfuncionaiosListaFF"  formControlName="SelectfuncionaiosListaFF">
-                           @for (pessoa of pessoas; track pessoa){
-                            <option value={{pessoa}}>{{pessoa}}</option>}
+                        <select class="custom-select" id="SelectfuncionaiosListaFF" formControlName="SelectfuncionaiosListaFF">
+                           @for (pessoa of pessoas; track pessoa; let i = $index){
+                            <option value="{{i}}">{{pessoa.nome}}</option>}
                         </select>              
                       </div>
                       <div class="form-row">

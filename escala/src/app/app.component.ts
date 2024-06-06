@@ -23,16 +23,19 @@ export class AppComponent {
 
   calen:any[] = [] 
   escala:any[] = []
-  pessoas = ['Maria', 'José','Júlia','Pedro']
+  pessoas = [ {nome: 'Maria', obs: '10131456-TO', escala: []},
+              {nome: 'João', obs: '10131456-TO', escala: []},
+              {nome: 'Pedro', obs: '10131456-TO', escala: []},
+              {nome: 'Julia', obs: '10131456-TO', escala: []}];
   mes;
   
   // dados para teste
-  //horarios:any = [{desc: '7h às 11h - 12 às 19h', legenda: '', sigla: 'D', he: 'S'}]
-  horarios:any = []
+  horarios:any = [{
+    desc: "8h às 18hh ", sigla: "C", legenda: "Comercial", sab: true, dom: false, altern: false}]
 
   constructor(private $services: EscalaService, private formBuilder: FormBuilder){}
   
-  funcionario:any[] = [];
+  //funcionario:any[] = [];
 
   checkoutForm = this.formBuilder.group({
     escolhaMes: '',
@@ -41,13 +44,14 @@ export class AppComponent {
     dia1:''
   });
   lancamentoFeriasForm = this.formBuilder.group({
-    SelectfuncionaiosListaFF:'',
+    SelectfuncionaiosListaFF: 999,
     dtInicialFF:'',
     dtFimFF:'',
     radioFF:''
   })
   funcionarioForm = this.formBuilder.group({
-    nomefuncionario: ''
+    nomefuncionario: '',
+    obsfuncionario: ''
   })
   novaEscalaForm = this.formBuilder.group({
     desc_escala: '',
@@ -74,7 +78,6 @@ export class AppComponent {
     }
 
     onSubmit(){
-      this.funcionario.push(this.checkoutForm.value.SelectfuncionaiosLista)
       if(this.checkoutForm.value.escolhaMes != undefined){
         this.mes = this.checkoutForm.value.escolhaMes;
         this.calen = this.$services.addMes(this.checkoutForm.value);
@@ -85,20 +88,23 @@ export class AppComponent {
       this.checkoutForm.controls.escolhaMes.disable();
       this.checkoutForm.reset();
   }
-    preencheEscala(nomePessoa, escala){
-      let fun: Funcionario = ({nome: nomePessoa, escala: escala});
+    preencheEscala(funIndex, escala){
+      let fun = this.pessoas.at(funIndex)!
+      fun.escala = escala
       this.escala.push(fun);
   }  
     addFuncionario(){
-      this.pessoas.push(this.funcionarioForm.value.nomefuncionario||'')
+      let fun: Funcionario = ({nome: this.funcionarioForm.value.nomefuncionario!, obs: this.funcionarioForm.value.obsfuncionario!, escala: []});
+      this.pessoas.push(fun)
       this.funcionarioForm.reset();
   }
   addFeriasFaltas(){
-        this.escala =  this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
-                                               this.escala,
-                                               this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,
+    let fun = this.pessoas.at(this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF!)  
+    fun = this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
+                                               fun,
                                                this.lancamentoFeriasForm.value.dtInicialFF,
-                                               this.lancamentoFeriasForm.value.dtFimFF)
+                                              this.lancamentoFeriasForm.value.dtFimFF)
+    this.escala = this.$services.atualizaFuncionario(this.escala,fun)
   }
   addEscalaHorario(){
     let hor: horario = ({desc:this.novaEscalaForm.value.desc_escala!,
