@@ -53,22 +53,24 @@ export class EscalaService {
       }
       return this.escala
   }  
-    addFalta(ausencia,escala,funcio,dt_inicio,dt_fim){
-      let idx = escala.findIndex((x) => x.nome == funcio )
-      let escala_func = escala[idx].escala;
-      for(let c = 0; c < escala_func.length; c++){
+    addFalta(ausencia,funcio,dt_inicio,dt_fim){
+      console.log("chegou aqui o funcionário: "+funcio.nome+" primeiro dia: "+funcio.escala[0])
+      for(let c = 0; c < funcio.escala.length; c++){
        let dia = moment(this.mes_ano).add(c, 'days').format('YYYY-MM-DD')
         if(dia >= dt_inicio && dia <= dt_fim ){
-          if(ausencia == 'falta'){
-            if(escala_func[c] != '-'){
-              escala_func[c] = 'A*'
-            }
-          }else if (ausencia == 'ferias') {
-            escala_func[c] = 'Fe*'
+          if(ausencia == 'falta' && funcio.escala[c] != '-'){
+              funcio.escala[c] = 'A*'
+          }else if (ausencia == 'ferias' && funcio.escala[c] != '-') {
+            funcio.escala[c] = 'Fe*'
           }    
         }  
       }
-    escala[idx].escala = escala_func;
-    return escala;
+    return funcio;
     }
+
+atualizaFuncionario(escala,fun){
+  let idx = escala.findIndex((x) => x.nome == fun.nome)
+  escala[idx] = fun;
+  return escala;
+}
 }

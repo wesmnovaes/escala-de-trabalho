@@ -44,7 +44,7 @@ export class AppComponent {
     dia1:''
   });
   lancamentoFeriasForm = this.formBuilder.group({
-    SelectfuncionaiosListaFF:'',
+    SelectfuncionaiosListaFF: 999,
     dtInicialFF:'',
     dtFimFF:'',
     radioFF:''
@@ -99,11 +99,12 @@ export class AppComponent {
       this.funcionarioForm.reset();
   }
   addFeriasFaltas(){
-        this.escala =  this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
-                                               this.escala,
-                                               this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF,
+    let fun = this.pessoas.at(this.lancamentoFeriasForm.value.SelectfuncionaiosListaFF!)  
+    fun = this.$services.addFalta(this.lancamentoFeriasForm.value.radioFF,
+                                               fun,
                                                this.lancamentoFeriasForm.value.dtInicialFF,
-                                               this.lancamentoFeriasForm.value.dtFimFF)
+                                              this.lancamentoFeriasForm.value.dtFimFF)
+    this.escala = this.$services.atualizaFuncionario(this.escala,fun)
   }
   addEscalaHorario(){
     let hor: horario = ({desc:this.novaEscalaForm.value.desc_escala!,

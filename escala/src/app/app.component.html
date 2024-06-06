@@ -73,7 +73,7 @@
       <!-- Tabela de escala -->
       <div class="col-9" style="padding-left: 0%;">
         <div class="card card-table" id="tabela_escala">
-        <table class="table">
+        <table class="table " style="font-size: 8.5px;">
             <thead>
               <tr >
                 <th scope="col">Nome</th>
@@ -81,7 +81,7 @@
 
                  @for (c of calen; track c)
                  { 
-                  <th scope="col" style="font-size: 8.5px;"  ngSkipHydration>{{c}}</th> 
+                  <th scope="col"  ngSkipHydration>{{c}}</th> 
                  }
               </tr>
             </thead>
@@ -139,7 +139,7 @@
                         <label for="SelectfuncionaiosListaFF"><h5>Funcionário</h5></label>
                         <select class="custom-select" id="SelectfuncionaiosListaFF" formControlName="SelectfuncionaiosListaFF">
                            @for (pessoa of pessoas; track pessoa; let i = $index){
-                            <option value={{i}}>{{pessoa.nome}}</option>}
+                            <option value="{{i}}">{{pessoa.nome}}</option>}
                         </select>              
                       </div>
                       <div class="form-row">
