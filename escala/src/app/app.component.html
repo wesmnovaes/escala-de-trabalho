@@ -6,7 +6,7 @@
 </nav>
 <div class="container-centro ">
     <div class="row">
-      <div class="col-3">
+      <div class="col-3" id="menu-lateral">
         <div class="card card-form poppins-regular">
           <!-- Formuário lateral -->
           <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"> 
@@ -65,7 +65,7 @@
                 </div>
               </div>
             <div class="row btn-adicionar">
-              <button type="submit"  class="btn btn-primary">Adicionar</button>
+              <button type="submit" onclick="mostrar_legenda()" class="btn btn-primary">Adicionar</button>
              </div>
           </form>  
         </div>
@@ -73,31 +73,39 @@
       <!-- Tabela de escala -->
       <div class="col-9" style="padding-left: 0%;">
         <div class="card card-table" id="tabela_escala">
-        <table class="table " style="font-size: 8.5px;">
-            <thead>
-              <tr >
-                <th scope="col">Nome</th>
-                <th scope="col">Obs</th>
+          <div id="print_area">
+            <table class="table" style="font-size: 8.5px;">
+              <thead>
+                <tr >
+                  <th scope="col">Nome</th>
+                  <th scope="col">Obs</th>
 
-                 @for (c of calen; track c)
-                 { 
-                  <th scope="col"  ngSkipHydration>{{c}}</th> 
-                 }
-              </tr>
-            </thead>
-            <tbody>
-              @for (fun of escala; track fun) 
-              {
-                <tr style="font-size: 10.5px;">
-                    <th scope="row">{{fun.nome}}</th>
-                    <th scope="row">{{fun.obs}}</th> 
-                    @for (dias of fun.escala; track dias;let idx = $index) {
-                      <td>{{fun.escala[idx]}}</td>
-                    }
+                  @for (c of calen; track c)
+                  { 
+                    <th scope="col"  ngSkipHydration>{{c}}</th> 
+                  }
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @for (fun of escala; track fun) 
+                {
+                  <tr style="font-size: 10.5px;">
+                      <th scope="row">{{fun.nome}}</th>
+                      <th scope="row">{{fun.obs}}</th> 
+                      @for (dias of fun.escala; track dias;let idx = $index) {
+                        <td>{{fun.escala[idx]}}</td>
+                      }
+                  </tr>
+                }
+              </tbody>
+           </table>
+           <ul id="legenda_horario" style="display: none;">
+            @for (h of horarios; track h) {
+            <li> {{h.sigla}} - {{h.legenda}}</li>
+           
+            }
+            </ul>
+          </div>
           <!-- Modal Cadastrar novo funcionário -->
           <div class="modal fade" id="novo_funcionario" tabindex="-1" role="dialog" aria-labelledby="novo_funcionario_Label" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -224,11 +232,16 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        
+        <input type="button" onclick="printDiv('print_area')" value="print a div!" />
       </div>
       <div class="row">
         <div class="d-flex flex-row-reverse bd-highlight">
           <div class="p-2 bd-highlight"><button class="btn btn-success" (click)="gerarPDF()"> <img src="../assets/print.ico" class="img_ico"> Salvar para pdf </button></div> 
+         
+          
+          
         </div>
       </div>
     </div>
